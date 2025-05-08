@@ -3,3 +3,4 @@ playwright
 requests  
 imapclient
 pyzmail36
+gunicorn
