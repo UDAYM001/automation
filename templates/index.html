@@ -47,7 +47,8 @@
     <script>
         document.getElementById('start-btn').addEventListener('click', async () => {
             try {
-                const response = await fetch('http://localhost:5000/start-login', {
+                const response = await fetch('/start-login', {
+
                     method: 'POST',
                 });
                 const result = await response.json();
