@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Login </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background: linear-gradient(to right, #e0f7fa, #e1bee7);
+        }
+        img {
+            width: 300px;
+            height: auto;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-radius: 15px;
+        }
+        img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            background-color: #7e57c2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #5e35b1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Automated Login and Download</h1>
+    <img src="/static/images.jpg" alt="Carelon">
+    <br>
+    <button id="start-btn">Start Process</button>
+
+    <script>
+        document.getElementById('start-btn').addEventListener('click', async () => {
+            try {
+                const response = await fetch('http://localhost:5000/start-login', {
+                    method: 'POST',
+                });
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                alert('Failed to start the process');
+            }
+        });
+    </script>
+</body>
+</html>
