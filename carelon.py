@@ -3,6 +3,7 @@ from imapclient import IMAPClient
 import pyzmail
 import re
 import time
+import os
 
 # Fetch OTP from IONOS Webmail using IMAP
 def get_latest_otp_ionos(email, password, retries=5, wait_sec=5):
@@ -49,7 +50,8 @@ def run_login():
     email_password = "Ravi@1443101"
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        headless_mode = os.getenv("HEADLESS", "true").lower() == "true"
+        browser = p.chromium.launch(headless=headless_mode)
         context = browser.new_context(
             accept_downloads=True,  # ✅ Enable download permission
             viewport={'width': 1920, 'height': 1080},
