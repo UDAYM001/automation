@@ -49,7 +49,7 @@ def run_login():
     email_password = "Ravi@1443101"
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=False)
         context = browser.new_context(
             accept_downloads=True,  # ✅ Enable download permission
             viewport={'width': 1920, 'height': 1080},
@@ -102,7 +102,7 @@ def run_login():
                 saved_path = download.path()
                 print(f"✅ Download {i + 1} completed: {saved_path}")
 
-                time.sleep(90000)  # Optional wait between downloads
+                time.sleep(0000)  # Optional wait between downloads
             except Exception as e:
                 print(f"❌ Download {i + 1} failed: {e}")
 
